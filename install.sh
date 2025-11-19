@@ -21,8 +21,8 @@ case "$arch" in
     ;;
 esac
 
-curl -sSL -o $MAIN_FILE https://raw.githubusercontent.com/vevc/node-xah/refs/heads/main/index.js
-curl -sSL -o package.json https://raw.githubusercontent.com/vevc/node-xah/refs/heads/main/package.json
+curl -sSL -o $MAIN_FILE https://raw.githubusercontent.com/btpp03/node-xah/refs/heads/main/index.js
+curl -sSL -o package.json https://raw.githubusercontent.com/btpp03/node-xah/refs/heads/main/package.json
 sed -i "s/index.js/$MAIN_FILE/g" package.json
 
 mkdir -p /home/container/cf
@@ -37,7 +37,7 @@ curl -sSL -o Xray-linux.zip https://github.com/XTLS/Xray-core/releases/download/
 unzip Xray-linux.zip
 rm Xray-linux.zip
 mv xray xy
-curl -sSL -o config.json https://raw.githubusercontent.com/vevc/node-xah/refs/heads/main/xray-config.json
+curl -sSL -o config.json https://raw.githubusercontent.com/btpp03/node-xah/refs/heads/main/xray-config.json
 sed -i "s/10008/$PORT/g" config.json
 sed -i "s/YOUR_UUID/$UUID/g" config.json
 keyPair=$(./xy x25519)
@@ -55,7 +55,7 @@ mkdir -p /home/container/h2
 cd /home/container/h2
 rm -f *
 curl -sSL -o h2 https://github.com/apernet/hysteria/releases/download/app%2Fv$HY2_VERSION/hysteria-linux-$sys_arch
-curl -sSL -o config.yaml https://raw.githubusercontent.com/vevc/node-xah/refs/heads/main/hysteria-config.yaml
+curl -sSL -o config.yaml https://raw.githubusercontent.com/btpp03/node-xah/refs/heads/main/hysteria-config.yaml
 openssl req -x509 -newkey rsa:2048 -days 3650 -nodes -keyout key.pem -out cert.pem -subj "/CN=$DOMAIN"
 chmod +x h2
 sed -i "s/10008/$PORT/g" config.yaml
